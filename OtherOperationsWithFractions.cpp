@@ -18,6 +18,7 @@ public:
         int den = denominator_ * other.denominator_;
    
         int divisor = gcd(num, den);
+
         int new_num = num / divisor;
         int new_den = den / divisor;
         return Fraction(new_num, new_den);
@@ -84,6 +85,7 @@ public:
         return out;
     }
 };
+bool set_num(int n) { if (n == 0) return false; else return true; }
 
 int main() {
 
@@ -91,15 +93,31 @@ int main() {
 
     int num1, den1, num2, den2;
 
-    cout << "Введите числитель дроби 1: ";
-    cin >> num1;
-    cout << "Введите знаменатель дроби 1: ";
-    cin >> den1;
+    do {
+        cout << "Введите числитель дроби 1: ";
+        cin >> num1;
+        if (!set_num(num1)) cout << "Для облегчение решения мы не будем использовать числитель ноль, ведь тогда дробь будет равна 0, " << endl <<
+            "прошу ввести другое число" << endl;
+      
+    } while (!set_num(num1));
+        do {
+            cout << "Введите знаменатель дроби 1: ";
+            cin >> den1;
+            if (!set_num(den1)) cout << "Знаменатель не может быть равен 0" << endl;
+        } while (!set_num(den1));
+        do{
+                cout << "Введите числитель дроби 2: ";
+                cin >> num2;
+                if (!set_num(num2)) cout << "Для облегчение решения мы не будем использовать числитель ноль, ведь тогда дробь будет равна 0, " << endl <<
+                    "прошу ввести другое число" << endl;
 
-    cout << "Введите числитель дроби 2: ";
-    cin >> num2;
-    cout << "Введите знаменатель дроби 2: ";
-    cin >> den2;
+        } while (!set_num(num2));
+        do {
+            cout << "Введите знаменатель дроби 2: ";
+            cin >> den2;
+            if (!set_num(den2)) cout << "Знаменатель не может быть равен 0" << endl;
+        } while (!set_num(den2));
+
 
     Fraction f1(num1, den1);
     Fraction f2(num2, den2);
